@@ -12,6 +12,8 @@ $screen-break-point: 749.5px;
     --site-edge-margin: 15px;
 
     --main-font-family: 'Noto Sans TC', sans-serif;
+    --header-height: 60px;
+    --header-logo-width: 170px;
 }
 
 body {
@@ -64,7 +66,7 @@ ul, ol, li {
 .mr-auto {
     margin-right: auto !important;
 }
-.cursor-point {
+.cursorPoint {
     cursor: pointer;
 }
 

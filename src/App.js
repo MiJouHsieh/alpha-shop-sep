@@ -1,9 +1,7 @@
 import Main from './components/main/Main'
-
-// import logo from './logo.svg';
-import './App.css';
-import './base.scss';
-import './main.css'
+import './base.scss'
+import './reset.scss'
+import './form.scss'
 
 function App() {
   return (
