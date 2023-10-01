@@ -1,3 +1,47 @@
+$screen-break-point: 749.5px;
+%done-phase {
+    .icon {
+        display: inline-block;
+    }
+    .text {
+        display: none;
+    }
+}
+%undone-phase {
+    .icon {
+        display: none;
+    }
+    .text {
+        display: inline-block;
+    }
+}
+%current-text {
+    color: var(--progress-current-color);
+}
+%current-icon {
+    @extend %current-text;
+    background-color: transparent;
+    border: 1px solid var(--progress-current-color);
+    @extend %undone-phase;
+}
+%undone-text {
+    color: var(--progress-undone-color);
+}
+%undone-icon {
+    @extend %undone-text;
+    background-color: transparent;
+    border: 1px solid var(--progress-undone-color);
+    @extend %undone-phase;
+}
+%done-text {
+    @extend %current-text;
+}
+%done-icon {
+    color: var(--progress-done-color);
+    background-color: transparent;
+    @extend %done-phase;
+}
+
 section.progressContainer {
   display: flex;
   align-items: center;
@@ -47,4 +91,72 @@ section.progressContainer {
       color: var(--main-text);
     }
   }
+}
+
+// 設定STEP 1 狀態
+.progressContainer {
+    .progressBar {
+        &[data-order="1"] {
+            border-color: var(--done-progress-border);
+        }
+        &[data-order="2"] {
+            border-color: var(--undone-progress-border);
+        }
+    }
+    span[data-phase="address"] {
+        .progressIcon {
+            @extend %current-icon;
+            background-color: var(--pg-addr-bg-color);
+            border-color: var(--pg-addr-bg-color);
+            color: var(--pg-addr-color);
+        }
+  }
+  span[data-phase="shipping"],
+  span[data-phase="credit-card"] {
+    .progressIcon {
+        @extend %undone-icon;
+    }
+    .progressLabel {
+        color: var(--progress-undone-color);
+    }
+  }
+}
+
+@media screen and (max-width: $screen-break-point) {
+    section.progressContainer {
+        margin-top: 24px;
+        .progressGroup {
+            .progressIcon {
+                width: 32px;
+                height: 32px;
+                margin-right: 0px;
+
+                .text {
+                    line-height: 32px;
+                }
+            }
+        }
+        .progressLabel {
+            display: none;
+        }
+    }
+    section.formContainer {
+        margin-top: 24px;
+    }
+    section.progressControlContainer {
+        position: relative;
+        margin-top: 24px;
+        margin-bottom: 40px;
+    }
+    section.buttonGroup {
+        button.next {
+            width: 156px;
+        }
+
+        &[data-phase='address'] {
+            button.next {
+                width: 100%;
+            }
+        }
+    }
 }
