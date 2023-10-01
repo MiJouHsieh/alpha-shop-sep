@@ -5,6 +5,9 @@
 專案畫面 - 註冊帳號階段
 ![註冊帳號階段](public/screenshot0930.png)
 
+專案畫面 - Cart階段
+![Cart階段](public/screenshot1001.png)
+
 產品功能:
 * 使用者可以註冊帳號
 * 使用者可以以按鈕加減數量下單商品，立即顯示總金額
