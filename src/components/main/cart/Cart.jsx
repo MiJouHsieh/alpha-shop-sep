@@ -3,7 +3,44 @@ import styles from "./Cart.module.scss";
 import minusIcon from "../../../assets/icons/minus.svg";
 // import plusIcon from "assets/icons/plus.svg";
 import plusIcon from "../../../assets/icons/plus.svg";
+import {products} from "./cartProducts"
 
+function Product ({...product}) {
+  return (
+    <div
+      className={`${styles.productContainer} col col-12`}
+      data-count="0"
+      data-price={product.price}
+    >
+      <img
+        className={styles.imgContainer}
+        // src="src/assets/images/product-1.jpg"
+        src={product.img}
+        aria-label={product.name}
+      />
+      <div className={styles.productInfo}>
+        <div className={styles.productName}>{product.name}</div>
+        <div className={styles.productControlContainer}>
+          <div className={styles.productControl}>
+            <object
+              className={`${styles.productAction} minus`}
+              data={minusIcon}
+              aria-label="minus-icon"
+            ></object>
+
+            <span className={styles.productCount}>{product.quantity}</span>
+            <object
+              className={`${styles.productAction} plus`}
+              data={plusIcon}
+              aria-label="plus-icon"
+            ></object>
+          </div>
+        </div>
+        <div className={styles.price}>${product.price}</div>
+      </div>
+    </div>
+  );
+}
 
 export default function Cart() {
   return (
@@ -14,68 +51,9 @@ export default function Cart() {
         className={`${styles.productList} col col-12`}
         data-total-price="0"
       >
-        <div
-          className={`${styles.productContainer} col col-12`}
-          data-count="0"
-          data-price="3999"
-        >
-          <img
-            className={styles.imgContainer}
-            src="src/assets/images/product-1.jpg"
-            aria-label="product 1"
-          />
-          <div className={styles.productInfo}>
-            <div className={styles.productName}>破壞補丁修身牛仔褲</div>
-            <div className={styles.productControlContainer}>
-              <div className={styles.productControl}>
-                <object
-                  className={`${styles.productAction} minus`}
-                  data={minusIcon}
-                  aria-label="minus-icon"
-                ></object>
-
-                <span className={styles.productCount}>0</span>
-                <object
-                  className={`${styles.productAction} plus`}
-                  data={plusIcon}
-                  aria-label="plus-icon"
-                ></object>
-              </div>
-            </div>
-            <div className={styles.price}>$0</div>
-          </div>
-        </div>
-        <div
-          className={`${styles.productContainer} col col-12`}
-          data-count="0"
-          data-price="1299"
-        >
-          <img
-            className={styles.imgContainer}
-            src="../../../assets/images/product-2.jpg"
-            aria-label="product 2"
-          />
-          <div className={styles.productInfo}>
-            <div className={styles.productName}>刷色直筒牛仔褲</div>
-            <div className={styles.productControlContainer}>
-              <div className={styles.productControl}>
-                <object
-                  className={`${styles.productAction} minus`}
-                  data={minusIcon}
-                  aria-label="minus-icon"
-                ></object>
-
-                <span className={styles.productCount}>0</span>
-                <object
-                  className={`${styles.productAction} plus`}
-                  data={plusIcon}
-                  aria-label="plus icon"
-                ></object>
-              </div>
-            </div>
-            <div className={styles.price}>$0</div>
-          </div>
-        </div>
+        {products.map( product => 
+          <Product {...product} key={product.id} />
+        )}
       </section>
 
       <section className={`${styles.cartInfo} shipping  col col-12`}>
