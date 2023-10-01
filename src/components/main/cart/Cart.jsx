@@ -1,8 +1,8 @@
 import styles from "./Cart.module.scss";
-// import {minus.svg} from 'public/icons/minus.svg'
-import minusIcon from "../../../assets/icons/minus.svg";
-// import plusIcon from "assets/icons/plus.svg";
-import plusIcon from "../../../assets/icons/plus.svg";
+import minusIcon from "assets/icons/minus.svg";
+// import minusIcon from "../../../assets/icons/minus.svg";
+import plusIcon from "assets/icons/plus.svg";
+// import plusIcon from "../../../assets/icons/plus.svg";
 import {products} from "./cartProducts"
 
 function Product ({...product}) {
@@ -14,7 +14,7 @@ function Product ({...product}) {
     >
       <img
         className={styles.imgContainer}
-        // src="src/assets/images/product-1.jpg"
+        // src="assets/images/product-1.jpg"
         src={product.img}
         aria-label={product.name}
       />

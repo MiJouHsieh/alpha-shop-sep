@@ -1,5 +1,5 @@
-import rightArrow from "../../../assets/icons/right-arrow.svg";
-// import rightArrow from 'assets/icons/right-arrow.svg'
+// import rightArrow from "../../../assets/icons/right-arrow.svg";
+import rightArrow from 'assets/icons/right-arrow.svg'
 
 import styles from "./ProgressControl.module.scss";
 export default function ProgressControl() {
@@ -14,7 +14,6 @@ export default function ProgressControl() {
         <button className={`${styles.next} ${styles.cursorPoint}`}>
           下一步
           <object
-            // data="./public/icons/right-arrow.svg"
             data={rightArrow}
             className={styles.cursorPoint}
             aria-label="right-arrow"

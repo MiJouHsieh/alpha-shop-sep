@@ -1,7 +1,7 @@
-import StepProgress from "./StepProgress";
-import Form from "./form/Form";
-import AddressForm from "./form/AddressForm";
-import styles from "./Register.module.scss";
+import StepProgress from "components/main/register/StepProgress";
+import Form from "components/main/register/form/Form";
+import AddressForm from "components/main/register/form/AddressForm";
+import styles from "components/main/register/Register.module.scss";
 
 export default function Register() {
   return (
