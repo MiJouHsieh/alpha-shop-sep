@@ -100,6 +100,9 @@ section.formBody {
         margin-top: 24px;
         cursor: pointer;
 
+        input {
+            all: unset; //去除input 預設方框
+        }
         input[type='radio'] {
             width: 20px;
             height: 20px;
@@ -129,7 +132,9 @@ section.formBody {
             flex-grow: 1;
             flex-wrap: wrap;
             align-content: center;
-
+            .row {	//水平左右排列
+                justify-content: space-between;	
+            }
             .col {
                 margin-bottom: 2px;
             }
