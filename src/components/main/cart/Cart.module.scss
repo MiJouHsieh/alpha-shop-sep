@@ -55,7 +55,9 @@ section.productList {
                 margin-bottom: 17px;
                 justify-content: space-between;
                 align-items: center;
-
+                .productButton {
+                    all: unset;
+                }
                 .productAction {
                     display: inline-block;
                     width: 27px;
