@@ -1,54 +1,40 @@
 import { useState } from "react";
 import styles from "./Cart.module.scss";
-import minusIcon from "assets/icons/minus.svg";
-// import minusIcon from "../../../assets/icons/minus.svg";
-// import plusIcon from "assets/icons/plus.svg";
+import { ReactComponent as MinusIcon } from "assets/icons/minus.svg";
 import { ReactComponent as PlusIcon } from "assets/icons/plus.svg";
 import { products } from "./cartProducts";
 
-function Product({ ...product }, onIncreaseClick, onDecreaseClick) {
-// function Product(id,name,price,img, onIncreaseClick, onDecreaseClick) {
+function Product({
+  id,
+  name,
+  price,
+  img,
+  quantity,
+  onIncreaseClick,
+  onDecreaseClick,
+}) {
   return (
     <div
       className={`${styles.productContainer} col col-12`}
-      data-count="0"
-      data-price={product.price}
+      // data-count="0" //?
+      data-count={id}
+      data-price={price}
     >
-      <img
-        className={styles.imgContainer}
-        src={product.img}
-        aria-label={product.name}
-      />
+      <img className={styles.imgContainer} src={img} aria-label={name} />
       <div className={styles.productInfo}>
-        <div className={styles.productName}>{product.name}</div>
+        <div className={styles.productName}>{name}</div>
         <div className={styles.productControlContainer}>
           <div className={styles.productControl}>
-            {/* <button
+            <MinusIcon
+              className={`${styles.productAction} minus `}
               onClick={() => {
-                onDecrease(product.id)
+                onDecreaseClick(id);
               }}
-              className={styles.productButton}
-            >
-              <object
-                className={`${styles.productAction} minus`}
-                data={minusIcon}
-                aria-label="minus-icon"
-              ></object>
-            </button> */}
-            <span
-              onClick={() => {
-                onDecreaseClick(product.id);
-              }}
-            >
-              <span className={styles.productAction}>
-                <img src={minusIcon} alt="minus icon" />
-              </span>
-            </span>
-
-            <span className={styles.productCount}>{product.quantity}</span>
+            />
+            <span className={styles.productCount}>{quantity}</span>
             <button
               onClick={() => {
-                onIncreaseClick(product.id);
+                onIncreaseClick(id);
               }}
               className={styles.productButton}
             >
@@ -61,7 +47,7 @@ function Product({ ...product }, onIncreaseClick, onDecreaseClick) {
             </button>
           </div>
         </div>
-        <div className={styles.price}>${product.price}</div>
+        <div className={styles.price}>${price}</div>
       </div>
     </div>
   );
@@ -71,33 +57,32 @@ export default function Cart() {
   const [productsData, setProductsData] = useState(products);
 
   function handleDecreaseClick(productId) {
-    let nextProductData = productsData.map((item) => {
+    const nextProductData = productsData.map((item) => {
       if (item.id === productId) {
         //避免負數
         return {
           ...item,
-          quantity: (item.quantity - 1 > 0) ? (item.quantity - 1) : 0,
-        }
+          quantity: item.quantity - 1 > 0 ? item.quantity - 1 : 0,
+        };
       } else {
         return item;
       }
-    })
-    setProductsData(nextProductData)
+    });
+    setProductsData(nextProductData);
   }
 
   function handleIncreaseClick(productId) {
-    setProductsData(
-      productsData.map((item) => {
-        if (item.id === productId) {
-          return {
-            ...item,
-            quantity: item.quantity + 1
-          };
-        } else {
-          return item
-        }
-      })
-    );
+    const nextProductData = productsData.map((item) => {
+      if (item.id === productId) {
+        return {
+          ...item,
+          quantity: item.quantity + 1,
+        };
+      } else {
+        return item;
+      }
+    });
+    setProductsData(nextProductData);
   }
 
   return (
@@ -108,17 +93,17 @@ export default function Cart() {
         className={`${styles.productList} col col-12`}
         data-total-price="0"
       >
-        {products.map((product) => (
+        {productsData.map((product) => (
           <Product
-            {...product}
             key={product.id}
+            {...product}
             onIncreaseClick={handleIncreaseClick}
             onDecreaseClick={handleDecreaseClick}
           />
         ))}
       </section>
 
-      <section className={`${styles.cartInfo} shipping  col col-12`}>
+      <section className={`${styles.cartInfo} shipping col col-12`}>
         <div className={styles.text}>運費</div>
         <div className={styles.price}>免費</div>
       </section>
