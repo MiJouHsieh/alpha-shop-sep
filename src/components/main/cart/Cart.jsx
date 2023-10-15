@@ -55,6 +55,7 @@ function Product({
 
 export default function Cart() {
   const [productsData, setProductsData] = useState(products);
+  const totalPrice = productsData.map(item => item.price * item.quantity).reduce((acc, cur) => acc+cur)
 
   function handleDecreaseClick(productId) {
     const nextProductData = productsData.map((item) => {
@@ -110,7 +111,7 @@ export default function Cart() {
 
       <section className={`${styles.cartInfo} total col col-12`}>
         <div className={styles.text}>小計</div>
-        <div className={styles.price}>$0</div>
+        <div className={styles.price}>$ {totalPrice}</div>
       </section>
     </section>
   );
