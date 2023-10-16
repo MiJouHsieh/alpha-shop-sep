@@ -1,5 +1,6 @@
-import styles from "./Form.module.scss";
-export default function ShippingForm({}) {
+// import styles from "./Form.module.scss";
+import styles from "components/main/register/Register.module.scss";
+export default function ShippingForm() {
   return (
     <>
       <label className={`${styles.radioGroup} col col-12`} data-price="0">

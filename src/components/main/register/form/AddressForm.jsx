@@ -1,6 +1,7 @@
-import styles from "./Form.module.scss";
+// import styles from "./Form.module.scss";
+import styles from "components/main/register/Register.module.scss";
 
-export default function AddressForm({ layoutLg, layoutSm }) {
+export default function AddressForm() {
   return (
     <>
       {/* <div className="col col-12"> */}
