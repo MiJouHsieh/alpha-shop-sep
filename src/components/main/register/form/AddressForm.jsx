@@ -10,7 +10,7 @@ export default function AddressForm() {
           <div className={styles.inputLabel}>稱謂</div>
           <div className={styles.selectContainer}>
             <select>
-              <option value="mr" selected>
+              <option value="mr" defaultValue>
                 先生
               </option>
               <option value="ms">女士</option>
