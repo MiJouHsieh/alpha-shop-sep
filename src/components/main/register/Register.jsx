@@ -1,14 +1,17 @@
 import StepProgress from "components/main/register/StepProgress";
-import Form from "components/main/register/form/Form";
+// import Form from "components/main/register/form/Form";
 import AddressForm from "components/main/register/form/AddressForm";
+import ShippingForm from "components/main/register/form/ShippingForm";
+import CreditCardForm from "components/main/register/form/CreditCardForm";
+
 import styles from "components/main/register/Register.module.scss";
 
-export default function Register() {
+export default function Register({ progressStep }) {
   return (
-    //  <!-- register -->
+    //  <!-- register -->  //progressStep 帶入數字
     <section
       className={`${styles.registerContainer} col col-lg-6 col-sm-12`}
-      data-phase="1"
+      data-phase={progressStep}
       data-total-price="0"
     >
       {/* <!-- register-title --> */}
@@ -18,69 +21,44 @@ export default function Register() {
       <StepProgress />
 
       {/* <!-- register-form --> */}
-      <section className={`${styles.formContainer} col col-12`}>
+      {/* 透過 progressStep 條件顯示內容 */}
+      <section
+        className={`${styles.formContainer}  col col-12`}
+        data-phase={progressStep}
+      >
         {/* <!-- address phase --> */}
-        <Form data-phase="shipping" formTitle="寄送地址">
+        {/* 使用Form 元件 browser無法出現 data-phase ??*/}
+        {/* <Form data-phase="address" formTitle="寄送地址">
           <AddressForm />
-        </Form>
+        </Form> */}
+        <form className="col col-12" data-phase="address">
+          <h3 className={styles.formTitle}>寄送地址</h3>
+          <section className={`${styles.formBody} col col-12`}>
+            <AddressForm />
+          </section>
+        </form>
 
         {/* <!-- shipping phase --> */}
-        {/* <form className="col col-12" data-phase="shipping">
-          <h3 className="form-title">運送方式</h3>
-          <section className="form-body col col-12">
-            <label className="radio-group col col-12" data-price="0">
-              <input id="shipping-standard" type="radio" name="shipping"  checked/>
-              <div className="radio-info">
-                <div className="col col-12">
-                  <div className="text">標準運送</div>
-                  <div className="price"></div>
-                </div>
-                <div className="period col col-12">約 3~7 個工作天</div>
-              </div>
-              <div className="radio-box-border"></div>
-            </label>
-            <label className="radio-group col col-12" data-price="500">
-              <input id="shipping-dhl" type="radio" name="shipping" />
-              <div className="radio-info">
-                <div className="col col-12">
-                  <div className="text">DHL 貨運</div>
-                  <div className="price"></div>
-                </div>
-                <div className="period col col-12">48 小時內送達</div>
-              </div>
-              <div className="radio-box-border"></div>
-            </label>
+        {/* <Form data-phase="shipping" formTitle="運送方式">
+          <ShippingForm />
+        </Form> */}
+        <form className="col col-12" data-phase="shipping">
+          <h3 className={styles.formTitle}>運送方式</h3>
+          <section className={`${styles.formBody} col col-12`}>
+            <ShippingForm />
           </section>
-        </form> */}
+        </form>
 
         {/* <!-- credit-card phase --> */}
-        {/* <form className="col col-12" data-phase="credit-card">
-          <h3 className="form-title">付款資訊</h3>
-          <section className="form-body col col-12">
-            <div className="col col-12">
-              <div className="input-group input-w-lg-4 input-w-sm-full">
-                <div className="input-label">持卡人姓名</div>
-                <input type="text" placeholder="John Doe" />
-              </div>
-            </div>
-            <div className="col col-12">
-              <div className="input-group input-w-lg-4 input-w-sm-full">
-                <div className="input-label">卡號</div>
-                <input type="text" placeholder="1111 2222 3333 4444" />
-              </div>
-            </div>
-            <div className="col col-12">
-              <div className="input-group input-w-lg-3 input-w-sm-s3">
-                <div className="input-label">有效期限</div>
-                <input type="text" placeholder="MM/YY" />
-              </div>
-              <div className="input-group input-w-lg-3 input-w-sm-s3">
-                <div className="input-label">CVC / CCV</div>
-                <input type="text" placeholder="123" />
-              </div>
-            </div>
+        {/* <Form data-phase="credit-card" formTitle="付款資訊">
+          <CreditCardForm />
+        </Form> */}
+        <form className="col col-12" data-phase="credit-card">
+          <h3 className={styles.formTitle}>付款資訊</h3>
+          <section className={`${styles.formBody} col col-12`}>
+            <CreditCardForm />
           </section>
-        </form> */}
+        </form>
       </section>
     </section>
   );
