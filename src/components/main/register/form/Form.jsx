@@ -1,4 +1,5 @@
-import styles from "./Form.module.scss";
+// import styles from "./Form.module.scss";
+import styles from "components/main/register/Register.module.scss";
 
 export default function Form({ children, dataPhase, formTitle }) {
   return (
