@@ -1,10 +1,22 @@
 // import styles from "./Form.module.scss";
 import styles from "components/main/register/Register.module.scss";
+import { useState } from "react";
 export default function ShippingForm() {
+  const [selected, setSelected] = useState("standard-shipping");
+  const handleChange = (event) => {
+    setSelected(event.target.value);
+  };
   return (
     <>
       <label className={`${styles.radioGroup} col col-12`} data-price="0">
-        <input id="shipping-standard" type="radio" name="shipping" checked />
+        <input
+          id="shipping-standard"
+          value="shipping-standard"
+          type="radio"
+          name="shipping"
+          checked={selected === "shipping-standard"}
+          onChange={handleChange}
+        />
         <div className={styles.radioInfo}>
           <div className={`${styles.row} col col-12`}>
             <div className={styles.text}>標準運送</div>
@@ -16,7 +28,14 @@ export default function ShippingForm() {
       </label>
 
       <label className={`${styles.radioGroup} col col-12`} data-price="500">
-        <input id="shipping-dhl" type="radio" name="shipping" />
+        <input
+          id="shipping-dhl"
+          value="shipping-dhl"
+          type="radio"
+          name="shipping"
+          checked={selected === "shipping-dhl"}
+          onChange={handleChange}
+        />
         <div className={styles.radioInfo}>
           <div className={`${styles.row} col col-12`}>
             <div className={styles.text}>DHL 貨運</div>
