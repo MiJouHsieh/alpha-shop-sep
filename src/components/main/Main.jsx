@@ -1,9 +1,8 @@
 import { useState } from "react";
-// import Register from "./components/main/register/Register";
-import Register from "./register/Register";
-import ProgressControl from "./progressControl/ProgressControl";
-import styles from "./Main.module.scss";
-import Cart from "./cart/Cart";
+import Register from "components/main/register/Register";
+import ProgressControl from "components/main/progressControl/ProgressControl";
+import styles from "components/main/Main.module.scss";
+import Cart from "components/main/cart/Cart";
 
 export default function Main() {
   const [progressStep, setProgressStep] = useState(1);

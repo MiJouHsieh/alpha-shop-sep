@@ -1,8 +1,8 @@
 import { useState } from "react";
-import styles from "./Cart.module.scss";
+import styles from "components/main/cart/Cart.module.scss";
 import { ReactComponent as MinusIcon } from "assets/icons/minus.svg";
 import { ReactComponent as PlusIcon } from "assets/icons/plus.svg";
-import { products } from "./cartProducts";
+import { products } from "components/main/cart/cartProducts";
 
 function Product({
   id,
