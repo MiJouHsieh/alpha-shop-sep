@@ -1,7 +1,6 @@
 // import rightArrow from "../../../assets/icons/right-arrow.svg";
 import rightArrow from 'assets/icons/right-arrow.svg'
 import leftArrow from "assets/icons/left-arrow.svg";
-// import styles from "./ProgressControl.module.scss";
 import styles from "components/main/register/Register.module.scss";
 
 function ButtonGroup({dataPhase,children}) {

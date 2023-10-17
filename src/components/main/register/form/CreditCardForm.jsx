@@ -1,4 +1,3 @@
-// import styles from "./Form.module.scss";
 import styles from "components/main/register/Register.module.scss";
 
 function InputGroup4({ inputLabel, placeholder }) {

@@ -1,4 +1,3 @@
-// import styles from "./StepProgress.module.scss"; //無法從Register改變樣式
 import { ReactComponent as PgCompleteIcon } from "assets/icons/pg-complete.svg";
 import styles from "components/main/register/Register.module.scss";
 

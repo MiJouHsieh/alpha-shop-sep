@@ -1,10 +1,8 @@
-// import styles from "./Form.module.scss";
 import styles from "components/main/register/Register.module.scss";
 
 export default function AddressForm() {
   return (
     <>
-      {/* <div className="col col-12"> */}
       <div className={`${styles.row} col col-12`}>
         <div className={`${styles.inputGroup} input-w-lg-2 input-w-sm-s1`}>
           <div className={styles.inputLabel}>稱謂</div>

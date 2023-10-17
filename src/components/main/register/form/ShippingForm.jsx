@@ -1,4 +1,3 @@
-// import styles from "./Form.module.scss";
 import styles from "components/main/register/Register.module.scss";
 import { useState } from "react";
 export default function ShippingForm() {
