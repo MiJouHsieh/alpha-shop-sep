@@ -1,5 +1,5 @@
 import StepProgress from "components/main/register/StepProgress";
-// import Form from "components/main/register/form/Form";
+import Form from "components/main/register/form/Form";
 import AddressForm from "components/main/register/form/AddressForm";
 import ShippingForm from "components/main/register/form/ShippingForm";
 import CreditCardForm from "components/main/register/form/CreditCardForm";
@@ -27,38 +27,20 @@ export default function Register({ progressStep }) {
         data-phase={progressStep}
       >
         {/* <!-- address phase --> */}
-        {/* 使用Form 元件 browser無法出現 data-phase ??*/}
-        {/* <Form data-phase="address" formTitle="寄送地址">
+        <Form dataPhase="address" formTitle="寄送地址">
           <AddressForm />
-        </Form> */}
-        <form className="col col-12" data-phase="address">
-          <h3 className={styles.formTitle}>寄送地址</h3>
-          <section className={`${styles.formBody} col col-12`}>
-            <AddressForm />
-          </section>
-        </form>
+        </Form>
 
         {/* <!-- shipping phase --> */}
-        {/* <Form data-phase="shipping" formTitle="運送方式">
+        <Form dataPhase="shipping" formTitle="運送方式">
           <ShippingForm />
-        </Form> */}
-        <form className="col col-12" data-phase="shipping">
-          <h3 className={styles.formTitle}>運送方式</h3>
-          <section className={`${styles.formBody} col col-12`}>
-            <ShippingForm />
-          </section>
-        </form>
+        </Form>
 
         {/* <!-- credit-card phase --> */}
-        {/* <Form data-phase="credit-card" formTitle="付款資訊">
+        <Form dataPhase="credit-card" formTitle="付款資訊">
           <CreditCardForm />
-        </Form> */}
-        <form className="col col-12" data-phase="credit-card">
-          <h3 className={styles.formTitle}>付款資訊</h3>
-          <section className={`${styles.formBody} col col-12`}>
-            <CreditCardForm />
-          </section>
-        </form>
+        </Form>
+        
       </section>
     </section>
   );
