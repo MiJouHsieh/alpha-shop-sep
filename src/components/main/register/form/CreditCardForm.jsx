@@ -1,31 +1,95 @@
+import { useContext } from "react";
 import styles from "components/main/register/Register.module.scss";
+import { OrderDataContext } from "components/main/OrderDataContext";
 
-function InputGroup4({ inputLabel, placeholder }) {
+function InputGroup4() {
+  const { cardValue, setCardValue } = useContext(OrderDataContext);
+  // 監聽變更
+  function handleCardValueChange(infoValue, infoId) {
+    let nextValue = cardValue.map((info) => {
+      if (info.id === infoId) {
+        return {
+          ...info,
+          value: infoValue,
+        };
+      }
+      return info;
+    });
+    setCardValue(nextValue);
+  }
   return (
-    <div className={`${styles.inputGroup} input-w-lg-4 input-w-sm-full`}>
-      <div className={styles.inputLabel}>{inputLabel}</div>
-      <input type="text" placeholder={placeholder} />
-    </div>
+    <>
+      {cardValue.map((info) => {
+        if (info.id < 2) {
+          return (
+            <div
+              key={info.id}
+              className={`${styles.inputGroup} input-w-lg-4 input-w-sm-full`}
+            >
+              <div className={styles.inputLabel}>{info.label}</div>
+              <input
+                type="text"
+                placeholder={info.placeholder}
+                value={info.value}
+                onChange={(e) => handleCardValueChange(e.target.value, info.id)}
+              />
+            </div>
+          );
+        }
+        return null;
+      })}
+    </>
   );
 }
-function InputGroup3({ inputLabel, placeholder }) {
+function InputGroup3() {
+  const { cardValue, setCardValue } = useContext(OrderDataContext);
+  // 監聽變更
+  function handleCardValueChange(infoValue, infoId) {
+    let nextValue = cardValue.map((info) => {
+      if (info.id === infoId) {
+        return {
+          ...info,
+          value: infoValue,
+        };
+      }
+      return info;
+    });
+    setCardValue(nextValue);
+  }
   return (
-    <div className={`${styles.inputGroup} input-w-lg-3 input-w-sm-s3`}>
-      <div className={styles.inputLabel}>{inputLabel}</div>
-      <input type="text" placeholder={placeholder} />
-    </div>
+    <>
+      {cardValue.map((info) => {
+        if (info.id > 1) {
+          return (
+            <div
+              key={info.id}
+              className={`${styles.inputGroup} input-w-lg-3 input-w-sm-s3`}
+            >
+              <div className={styles.inputLabel}>{info.label}</div>
+              <input
+                type="text"
+                placeholder={info.placeholder}
+                value={info.value}
+                onChange={(e) => handleCardValueChange(e.target.value, info.id)}
+              />
+            </div>
+          );
+        }
+        return null;
+      })}
+    </>
   );
 }
 
 export default function CreditCardForm() {
   return (
     <>
-      <InputGroup4 inputLabel="持卡人姓名" placeholder="John Doe" />
-      <InputGroup4 inputLabel="卡號" placeholder="1111 2222 3333 4444" />
+      <InputGroup4 />
+      {/* <InputGroup4 /> */}
 
       <div className={`${styles.row} col col-12`}>
-        <InputGroup3 inputLabel="有效期限" placeholder="MM/YY" />
-        <InputGroup3 inputLabel="CVC / CCV" placeholder="123" />
+        <InputGroup3 />
+        {/* <InputGroup3 /> */}
       </div>
     </>
   );

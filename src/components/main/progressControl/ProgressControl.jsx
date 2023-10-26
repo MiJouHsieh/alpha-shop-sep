@@ -2,7 +2,8 @@
 import rightArrow from 'assets/icons/right-arrow.svg'
 import leftArrow from "assets/icons/left-arrow.svg";
 import styles from "components/main/register/Register.module.scss";
-
+import { useContext } from 'react';
+import { OrderDataContext } from "components/main/OrderDataContext"
 function ButtonGroup({dataPhase,children}) {
   return (
     <section
@@ -43,6 +44,22 @@ function NextButton({ onClick }) {
     </button>
   );
 }
+
+function SubmitButton() {
+  const { onSubmitButton } = useContext(OrderDataContext);
+  return (
+    <button
+      value="Submit"
+      className={`${styles.next} ${styles.cursorPoint}`}
+      onClick={(e) => {
+        e.preventDefault();
+        onSubmitButton(e.target.value);
+      }}
+    >
+      確認下單
+    </button>
+  );
+}
 export default function ProgressControl({onClick}) {
   return (
     <section
@@ -60,12 +77,13 @@ export default function ProgressControl({onClick}) {
 
       <ButtonGroup dataPhase="credit-card" key="credit-card">
         <PrevButton onClick={onClick} />
-        <button
+        <SubmitButton/>
+        {/* <button
           className={`${styles.next} ${styles.cursorPoint}`}
           onClick={onClick}
         >
           確認下單
-        </button>
+        </button> */}
       </ButtonGroup>
     </section>
   );
