@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import styles from "components/main/cart/Cart.module.scss";
 import { ReactComponent as MinusIcon } from "assets/icons/minus.svg";
 import { ReactComponent as PlusIcon } from "assets/icons/plus.svg";
-import { products } from "components/main/cart/cartProducts";
+// import { products } from "components/main/cart/cartProducts";
+import { CartProductContext } from "components/main/cart/CartContext.js";
 
 function Product({
   id,
@@ -54,8 +55,14 @@ function Product({
 }
 
 export default function Cart() {
-  const [productsData, setProductsData] = useState(products);
-  const totalPrice = productsData.map(item => item.price * item.quantity).reduce((acc, cur) => acc+cur)
+  // const [productsData, setProductsData] = useState(products);
+  // Cart.jsx 改由 Context 拿購物車資料並渲染
+  const cartProduct = useContext(CartProductContext);
+  const [productsData, setProductsData] = useState(cartProduct);
+
+  const totalPrice = productsData
+    .map((item) => item.price * item.quantity)
+    .reduce((acc, cur) => acc + cur);
 
   function handleDecreaseClick(productId) {
     const nextProductData = productsData.map((item) => {
